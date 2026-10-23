@@ -1,0 +1,13 @@
+TFH Boss Sync Windows portable distribution
+
+CPython 3.12.14: Python Software Foundation License and included notices.
+Frida 17.24.3: wxWindows Library Licence 3.1 (LGPL with exception).
+PyInstaller 6.22.3 bootloader: GPL with exception permitting bundled applications.
+Tcl/Tk: included Python/Tcl/Tk distribution licenses.
+Other runtime components retain their own licenses; see licenses/ and Python-LICENSE.txt.
+OpenSSL and libffi notices are included with the runtime licenses.
+Microsoft runtime DLLs remain subject to their distribution license restrictions.
+
+No game executable, extracted script, game assets or game resources are distributed.
+This is an unofficial community project, not endorsed by the game's creators,
+Valve, Epic or the authors of third-party runtimes.
