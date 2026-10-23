@@ -12,6 +12,6 @@ English-first GUI with a 中文 / English button, game selection, Connect/Stop, 
 
 0.4.4 gameplay core was user-tested on the author's two local installations. The share GUI/host adds single-process support; automated smoke tests are not a substitute for two-computer gameplay validation. This remains an experimental prerelease. See included README and MOVES documents for full rules, hashes and known limitations. Restart affected games after stopping. No game assets or executables are included.
 
-Known issue: a prior paired session ended with `Invalid Oleander resources` following a background-meter exit; active-play versus process-teardown cause is not established by the log. The tool stopped on that fault. Restart affected games if this occurs.
+Exit-log clarification: the author confirmed that both games were deliberately closed when the prior session ended with `Invalid Oleander resources`. This observed shutdown-time safety stop is not a confirmed active-match gameplay bug; its exact internal cause remains untraced. Report separately if it occurs during active play. The original ZIP/checksum are unchanged; bundled documents contain the earlier, pre-clarification wording. The current repository documentation and these release notes supersede that wording.
 
 中文：解压到独立目录，运行 EXE，主菜单连接；双方必须同版开启。界面可切中文，包内附中文使用与招式说明。不匹配的“平行时空”是不同步，不是可靠检测或拒战机制。Steam/Epic 仅覆盖作者已核对构建，其他版本不承诺。

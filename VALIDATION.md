@@ -6,5 +6,5 @@
 - Source and portable Tk UI smoke checks cover default English, Chinese switching, consent default-off and document loading, without attaching.
 - Fresh ZIP extraction checks: archive CRC, no logs/game assets, required runtime/documents, Unicode/spaced destination, startup with no external Python on PATH.
 - The GUI/single-client host has mocked activation tests, not new end-to-end gameplay confirmation. Earlier real gameplay tests were same-PC Steam/Epic sessions. Remote-PC latency, exhaustive rollback and complete match lifecycle coverage remain unverified.
-- Prior v0.4.4 log contains one safety fault `Invalid Oleander resources` following a background-meter exit. Cause (active gameplay or process teardown) unconfirmed; documented as a known issue. Do not treat user-confirmed move functionality as proof of universal stability.
+- Prior v0.4.4 log contains one safety stop `Invalid Oleander resources`; the author subsequently confirmed deliberately closing both games at that time. This is an observed shutdown-time event, not a confirmed active-match gameplay bug. Exact internal cause remains untraced. Do not treat user-confirmed move functionality as proof of universal stability.
 - No remote handshake or modded-peer detection. Desync is not reliable automatic exclusion of unmodded clients.

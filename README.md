@@ -40,7 +40,7 @@ Other updates, store builds, modified resources, conflicting tools or loose Olea
 
 ## Troubleshooting
 
-Known issue: one earlier paired test ended with the safety fault `Invalid Oleander resources` after a background-meter auto-exit. The available log does not establish whether this was active gameplay or process teardown; root cause is unconfirmed. The controller stopped, rather than continuing to write with invalid values. Restart affected games on this fault. This is one reason the release remains experimental.
+Exit-log clarification: the author confirmed that both games were deliberately closed when the earlier paired session ended with `Invalid Oleander resources`. This is an observed shutdown-time safety stop, not evidence of a confirmed active-match gameplay bug. Its exact internal cause has not been traced. If this message occurs while still playing, stop and restart affected games and report it separately. The release remains experimental because remote-PC/rollback coverage is incomplete.
 
 - No game listed: start TFH, click Refresh; the tool must have permission to access that process. Use matching privilege levels; do not disable security controls.
 - Main-menu/signature/build error: both return to menu; restart affected games, close other tools and check the supported hashes. Do not attach mid-match.
