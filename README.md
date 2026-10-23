@@ -2,6 +2,8 @@
 
 Experimental, unofficial Windows mod for **Them's Fightin' Herds**. Adds balanced Boss Oleander and Boss Velvet moves using the game's normal inputs. English UI by default; click **中文** to switch to Chinese.
 
+**v0.5.1 balance fixes (user-tested in Steam training):** all recognized background entries join upkeep, including Homing Spark; native airborne 64+attack costs one magic per accepted cast, including in background. Every newly started 6A is settled separately, preventing free same-state air chains; the first paid-flight exit remains free. Unaffordable actions are rejected before startup. **Both peers must update together; do not mix with v0.5.0.** The superseded v0.5.0 release is withdrawn from public downloads. Cross-client validation of these new fixes remains pending.
+
 [中文说明](README.zh-CN.md) · [Move rules](MOVES.en.md) · [Releases](https://github.com/Wayne62314/TFH-Boss-Sync/releases)
 
 ## Both players MUST enable the same release
@@ -12,7 +14,7 @@ If only one player runs the mod, or versions differ, the two simulations can div
 
 ## Download and run
 
-1. Download **TFH-Boss-Sync-v0.5.0-windows-x64.zip** under Releases → Assets, NOT the automatic Source code ZIP.
+1. Download **TFH-Boss-Sync-v0.5.1-windows-x64.zip** under Releases → Assets, NOT the automatic Source code ZIP.
 2. Fully extract to a separate, writable folder, e.g. `D:\TFH-Boss-Sync` or a folder on your Desktop. **Do not copy it into the game folder. Do not run inside the ZIP.** Keep the entire `_internal` folder beside the EXE.
 3. No Python install, Setup.cmd, resource replacement or game-directory changes are needed; the portable runtime is included. This is an unsigned executable; do not disable security software to run it.
 4. Close other TFH mod tools. If a previous tool was connected, fully restart the game. Start your game normally through Steam or Epic, and stay at the **main menu**.

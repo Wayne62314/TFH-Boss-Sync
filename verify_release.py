@@ -2,7 +2,7 @@
 from pathlib import Path
 import os,subprocess,tempfile,zipfile
 root=Path(__file__).resolve().parent
-archive=root/'release/TFH-Boss-Sync-v0.5.0-windows-x64.zip'
+archive=root/'release/TFH-Boss-Sync-v0.5.1-windows-x64.zip'
 with tempfile.TemporaryDirectory(prefix='TFH share 验证 ') as d,zipfile.ZipFile(archive) as z:
  names=z.namelist()
  if z.testzip() is not None:raise RuntimeError('Archive CRC failure')

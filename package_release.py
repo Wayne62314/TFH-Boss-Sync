@@ -18,7 +18,7 @@ for name in ['frida','pyinstaller']:
 extra=root/'third_party';
 if extra.exists():shutil.copytree(extra,licenses/'additional',dirs_exist_ok=True)
 release=root/'release';release.mkdir(exist_ok=True)
-archive=release/'TFH-Boss-Sync-v0.5.0-windows-x64.zip'
+archive=release/'TFH-Boss-Sync-v0.5.1-windows-x64.zip'
 with zipfile.ZipFile(archive,'w',zipfile.ZIP_DEFLATED,compresslevel=6) as z:
  for f in sorted(bundle.rglob('*')):
   if f.is_file() and 'logs' not in f.relative_to(bundle).parts:z.write(f,Path(bundle.name)/f.relative_to(bundle))

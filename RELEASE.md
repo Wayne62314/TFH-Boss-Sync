@@ -1,17 +1,21 @@
-# v0.5.0 — Boss Oleander + Velvet (experimental)
+# v0.5.1 — Oleander balance fixes
 
-Download **TFH-Boss-Sync-v0.5.0-windows-x64.zip** below, not Source code. Fully extract to a separate writable folder (e.g. `D:\TFH-Boss-Sync`), keep `_internal`, then run `TFH-Boss-Sync.exe`. Runtime included; no Setup.cmd/Python install or game-file replacement needed.
+Download **TFH-Boss-Sync-v0.5.1-windows-x64.zip**, not Source code. Fully extract to a separate writable folder, keep `_internal`, and run `TFH-Boss-Sync.exe`. Runtime included; no Python/Setup.cmd or game-file replacement needed. English-first GUI with 中文 / English switching and bilingual move instructions.
 
-English-first GUI with a 中文 / English button, game selection, Connect/Stop, and English/Chinese usage and move rules. Each player connects one local game; same-PC dual-client selection is retained for tests. Both supported characters are always enabled for both sides.
+## Fixed
 
-**BOTH players must agree to run this SAME release and keep it connected.** One-sided/mismatched installs can desync into "parallel worlds". This is NOT a safe remote mod check or automatic match refusal: no handshake, version negotiation or matchmaking isolation is implemented. Local Connected does not confirm the peer. Stop and restart both games on divergence.
+- **Background upkeep bypass:** Homing Spark's background-entry action and native background idle now join the 50-raw-super-units-per-60-updates drain regardless of how Oleander arrived. Repeated casting does not pause or reset upkeep.
+- **Free 64 fireballs:** native airborne 64+attack (including 64C) costs one magic level per accepted cast, in foreground or background. A/B/C share the native Homing Spark state and fee. Insufficient magic prevents startup.
+- **Unlimited air 6A chains:** every newly accepted 6A start is settled separately, even when restarting the same named state. Normal ground/air starts cost one magic each. Paid-flight/background exit retains its first free 6A, but that entitlement cannot be reused for repeated starts. Natural playback is not charged per frame.
 
-- Oleander: 8D costs one magic, foreground flight ~3s; 4D background drains 50 raw super units/sec; empty super auto-exits through free 6A. Ground/ordinary-jump 6A costs one magic; paid-flight exit 6A is free. Sampled body/pillar normal HP damage is halved. Insufficient-magic ground/jump 6A is rejected before charge animation.
-- VV: grounded 22D spends two bars for ~6s tornado and countdown bar. A/B/C each once; all three finished, D, or timeout exits via level-1 super and drains all remaining meter, even below one bar. Waits for ice to finish; restores opacity. No level-2 freeze transplant.
-- The author's exact Steam and Epic builds are supported, with strict EXE/resource/native signature checks. No claim for every update or all rollback/remote-PC situations.
+6A half-damage and other flight rules are retained. Background meter exhaustion still triggers the free 6A exit. Velvet's two-bar 22D, ~6-second tornado, A/B/C once each and level-1 super exit remain unchanged. No level-2 freeze effect is included.
 
-0.4.4 gameplay core was user-tested on the author's two local installations. The share GUI/host adds single-process support; automated smoke tests are not a substitute for two-computer gameplay validation. This remains an experimental prerelease. See included README and MOVES documents for full rules, hashes and known limitations. Restart affected games after stopping. No game assets or executables are included.
+The author confirmed all three regression tests in **Steam training**: repeated air 6A payments/denial, 8D→64C/background casting payments and upkeep, and free auto-exit at zero super meter. 65 JavaScript and 9 Python tests pass; native C scratch tests and portable extraction/runtime/UI smoke checks pass. This does not establish dual-client synchronization of the new fixes or exhaustive rollback correctness. Previously reviewed Steam and Epic build profiles are retained; other updates/builds may be refused.
 
-Exit-log clarification: the author confirmed that both games were deliberately closed when the prior session ended with `Invalid Oleander resources`. This observed shutdown-time safety stop is not a confirmed active-match gameplay bug; its exact internal cause remains untraced. Report separately if it occurs during active play. The original ZIP/checksum are unchanged; bundled documents contain the earlier, pre-clarification wording. The current repository documentation and these release notes supersede that wording.
+## Multiplayer requirements
 
-中文：解压到独立目录，运行 EXE，主菜单连接；双方必须同版开启。界面可切中文，包内附中文使用与招式说明。不匹配的“平行时空”是不同步，不是可靠检测或拒战机制。Steam/Epic 仅覆盖作者已核对构建，其他版本不承诺。
+**BOTH players must agree to use this SAME release and keep it connected. Upgrade both sides; never mix v0.5.0 and v0.5.1.** Mismatched installs can desync into "parallel worlds". There is no remote MOD/version handshake, automatic refusal or matchmaking isolation. Local Connected does not verify the peer. Restart affected games after stopping or on divergence. Do not use against unsuspecting players.
+
+v0.5.0 is superseded and withdrawn from public downloads; its release is retained privately as a recoverable draft and its source tag/history remain. This remains an experimental prerelease. No game assets/executables are included. See README/MOVES files for setup, precise supported hashes and limitations.
+
+中文：0.5.1 修复了 64 火球白嫖魔法、火球进背景不扣超能，以及空中 6A 同名连发不付费三个漏洞，作者已在 Steam 训练场确认通过。背景每秒 50 原始超能、每次火球一格魔法、每次新 6A 独立结算；首次付费飞行退出免费。双方必须同时更新，旧 0.5.0 撤回公开下载。新修复的双端同步仍待另测；不同步不是可靠的 MOD 检测或自动拒战机制。

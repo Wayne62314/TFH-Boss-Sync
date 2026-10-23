@@ -5,7 +5,7 @@ from tkinter import ttk,messagebox
 import dual_boss as engine
 
 TEXT={
- 'en':dict(title='TFH Boss Sync',subtitle='Oleander + Velvet · experimental v0.5.0',
+ 'en':dict(title='TFH Boss Sync',subtitle='Oleander + Velvet · experimental v0.5.1',
   warning='BOTH players must run the SAME release and keep it connected. Without matching mods, matches can desync ("parallel worlds"). There is NO remote mod check or automatic refusal.',
   consent='I have agreed with my opponent to use this same release.',refresh='Refresh games',start='Connect selected',stop='Stop',
   status='Not connected',scanning='Looking for games…',connecting='Checking build and connecting…',ready='Connected — start a NEW match. Remote peer status: unknown.',
@@ -17,7 +17,7 @@ TEXT={
   close='Stop the MOD and close? Restart affected games afterwards. Do not stop during a match.',
   stopconfirm='Stop now? Both players should first return to the main menu. Restart affected games before continuing.',error='TFH Boss Sync',
   quick='README.md',moves='MOVES.en.md'),
- 'zh':dict(title='TFH Boss Sync',subtitle='奥莉 + VV · 实验版 v0.5.0',
+ 'zh':dict(title='TFH Boss Sync',subtitle='奥莉 + VV · 实验版 v0.5.1',
   warning='双方必须运行相同版本，并保持工具连接。不匹配会导致不同步（“平行时空”）。本工具没有远端 MOD 检测，也不会自动拒绝对战。',
   consent='我已与对手约定使用相同版本。',refresh='刷新游戏',start='连接所选游戏',stop='停止',
   status='未连接',scanning='正在查找游戏…',connecting='正在校验版本并连接…',ready='已连接：请开始新对局。远端是否开启：未知。',
@@ -36,7 +36,7 @@ class App:
  def __init__(self,root):
   self.root=root;self.lang='en';self.events=queue.Queue();self.running=False;self.scanning=False
   self.stop_event=None;self.state='status';self.rows={};self.tainted=set();self.closing=False;self.last_error=False
-  root.title('TFH Boss Sync 0.5.0');root.geometry('860x730');root.minsize(720,600)
+  root.title('TFH Boss Sync 0.5.1');root.geometry('860x730');root.minsize(720,600)
   root.protocol('WM_DELETE_WINDOW',self.close)
   self.frame=ttk.Frame(root,padding=18);self.frame.pack(fill='both',expand=True)
   top=ttk.Frame(self.frame);top.pack(fill='x')

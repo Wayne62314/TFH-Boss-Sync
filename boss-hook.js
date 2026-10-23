@@ -80,4 +80,4 @@ rpc.exports={
    x:r.actor.add(0xc78).readS32(),y:r.actor.add(0xc7c).readS32()})):[]};},
  shutdown(){enabled=false;for(const h of hooks)h.detach();hooks=[];return {stopped:true,restartBoth:true};}
 };
-emit('prepared',{version:'0.5.0',profile:profile.name,enabled:false});
+emit('prepared',{version:'0.5.1',profile:profile.name,enabled:false});

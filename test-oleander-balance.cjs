@@ -59,3 +59,25 @@ test('zero magic denies ground 6A without consuming normal attack input or makin
 test('foreground, background and automatic 6A exits are free even at zero magic',()=>{
  for(const bg of [false,true]){const g=game(1,0);g.step('Flight_Start');assert.equal(g.snapshot.magic,0);if(bg)assert.equal(g.step('Flight_N_BG').action,'Boss_6A_Air');assert.equal(g.step('Boss_6A_Air').magic,null);assert.equal(g.snapshot.magic,0);}
 });
+
+test('background adoption does not depend on 4D, Flight_Start or a surviving tracker',()=>{
+ for(const state of ['Flight_N_BG','HomingSparkCast']){
+  const g=game();for(let i=0;i<60;i++)g.step(state);
+  assert.equal(g.snapshot.meter,580);assert.equal(g.snapshot.remainder,0);assert.equal(oleanderControlDecode(g.snapshot.control).mode,2);
+ }
+});
+test('foreground Homing Spark joins upkeep immediately; repeated casts never reset drain debt',()=>{
+ const g=game();g.step('Flight_Start');
+ for(let i=0;i<120;i++)g.step(i%7<3?'HomingSparkCast':'Flight_N_BG');
+ assert.equal(g.snapshot.meter,530);assert.equal(g.snapshot.remainder,0);
+});
+test('zero meter from ANY background entry requests one free exit, including Homing Spark startup',()=>{
+ for(const state of ['Flight_N_BG','HomingSparkCast']){
+  const g=game(0,0);assert.equal(g.step(state).action,'Boss_6A_Air');assert.equal(g.step(state).action,null);
+  assert.equal(g.step('Boss_6A_Air').magic,null);assert.equal(g.snapshot.meter,0);
+ }
+});
+test('snapshot replay preserves background adoption and cast drain; native foreground/landing stop fees',()=>{
+ const g=game();g.step('HomingSparkCast');const snap=g.snapshot,first=g.step('HomingSparkCast');g.restore(snap);assert.deepEqual(g.step('HomingSparkCast'),first);
+ g.step('Flight_N');const meter=g.snapshot.meter;assert.equal(g.step('Stand').meter,null);assert.equal(g.snapshot.meter,meter);
+});

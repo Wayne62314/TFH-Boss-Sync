@@ -4,7 +4,7 @@ import argparse,hashlib,json,msvcrt,os,subprocess,sys,tempfile,threading,time
 from datetime import datetime
 
 ROOT=Path(__file__).resolve().parent
-VERSION='0.5.0'
+VERSION='0.5.1'
 PROFILES={
  '03E20EECE23F39FB1012061A5A7FF92F4B63DA23EB8EB641CF6EE379CBCE373D':dict(name='steam-reviewed',reset=0x1773720,update=0x189b7e0,flag=0x1780f40,scene=0x2b0d1e8,input=0x17617a0,inputReturn=0x1775825,make=0x3e3170,enqueue=0x1795980),
  '1D36C6CE32352C364E22F2B627C033C38AA660F84FF39ED0DFBB1B742AB8A5C6':dict(name='second-install-reviewed',reset=0x1773220,update=0x189b3f0,flag=0x1780a40,scene=0x2b0d208,input=0x17612a0,inputReturn=0x1775325,make=0x3e3140,enqueue=0x1795480),

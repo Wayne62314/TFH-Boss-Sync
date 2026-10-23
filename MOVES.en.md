@@ -1,4 +1,4 @@
-# Move rules — v0.5.0
+# Move rules — v0.5.1
 
 Only Oleander and Velvet are enhanced. Both players must use the same release and keep the mod connected. The same rules apply to P1/P2 on each client.
 
@@ -15,10 +15,13 @@ Select ordinary Oleander. Native Boss Flag27 enables the boss command set; no ph
 | 8D | Enter boss flight; costs 1 MAGIC level (not a super bar) once per flight. Insufficient magic cannot enter. |
 | Foreground flight | Lasts about 3 seconds (180 accepted native input updates). 6A exits early; timeout ends flight normally. |
 | 4D during foreground flight | Move into the battle background. The 3-second foreground limit no longer applies. |
+| Airborne 64 + attack (including 64C) | Native Homing Spark. Costs 1 magic level per accepted cast, in foreground OR background; insufficient magic rejects the action before it starts. All strengths share the same native state and fee. |
+| Any background entry | Upkeep starts from Homing Spark's background-entry action or native background idle, regardless of how you arrived. Casting again does not pause/reset upkeep. |
 | Background upkeep | Costs 50 raw SUPER-meter units per 60 logic updates, not 50% and not one bar. Sampled Oleander meter is 210 per bar, 630 full; absent other gains/costs, full meter lasts about 12.6 seconds. |
 | Background super meter reaches zero | Automatically use a free 6A exit, even with zero magic. |
 | 6A outside paid flight (ground or ordinary jump) | Costs 1 magic level once per action. With less than 1 level, neither ground nor ordinary-jump 6A should start a charge animation. Ordinary jump alone does not grant a free exit. |
 | 6A during paid 8D foreground/background flight | The exit 6A is free, even with zero magic; it ends the flight/background action. |
+| Restarting / chaining 6A | Every newly accepted 6A start is charged separately, even if it cancels directly into the same named air state. The free flight exit is consumed once; it does not grant free repeated 6As. An already-running action is not charged again each frame. |
 | 6A damage | Sampled normal HP-damage contacts from both Oleander's body and her dedicated 6A pillar deal 50% of their final damage before HP subtraction. Not just the first visible hit. |
 
 The native move handles its own animations and recovery. Other moves are not globally halved. Chip/gray/true-damage paths not covered by the sampled normal HP subtraction are not claimed to be halved. Rounding, combo scaling and native hit behavior can affect the displayed total.

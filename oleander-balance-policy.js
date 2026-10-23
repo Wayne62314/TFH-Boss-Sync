@@ -21,7 +21,7 @@ function oleanderBalanceStep({control=0,remainder=0,state,input,meter,magic,magi
  if(s.mode===5){
   if(!sixA)return clear();s.remaining--;if(s.remaining<=0)throw Error('Unaffordable ground 6A was not cancelled');return finish();
  }
- if(s.mode===4)return sixA?finish():clear(); // One payment/free exit per native action.
+ if(s.mode===4){if(sixA)return finish();s.mode=0;s.remaining=0;out.control=0;out.remainder=0;} // Release paid action before detecting ANY background entry.
  if(sixA){
   const free=[1,2,3].includes(s.mode);
   if(!free&&magic<magicUnit){exit('Stand','ground-6a-insufficient-magic');s.mode=5;return finish();}
@@ -31,6 +31,14 @@ function oleanderBalanceStep({control=0,remainder=0,state,input,meter,magic,magi
  if(s.mode===3){
   if(state==='Flight_End'||/^JumpFall|^JumpLand|^Stand/.test(state))return clear();
   s.remaining--;if(s.remaining<=0)throw Error('Oleander exit command did not start');return finish();
+ }
+ // Native 64+attack (HomingSparkCast) itself transitions into the background.
+ // Adopt the actual state even when the old foreground tracker was lost or
+ // flight was entered by another native route. Casting in BG never pauses or
+ // resets the integer drain remainder. Pending exits above still take priority.
+ if(['Flight_N_BG','HomingSparkCast'].includes(state)){
+  if(s.mode!==2)out.remainder=0;
+  s.mode=2;s.remaining=0;
  }
  if(s.mode===0){
   // Native enum U=6; preserve direction and synchronized history, suppress only D.
